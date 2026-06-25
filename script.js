@@ -64,5 +64,41 @@ console.log(computerSelection);
 console.log(playRound(playerSelection, computerSelection));
 
 function game() {
-  // your code here!
+  let playerScore = 0;
+  let computerScore = 0;
+  let roundsPlayed = 0;
+
+  while (roundsPlayed < 5) {
+    let playerSelection = prompt("Choose Rock, Paper or Scissors:");
+
+    const computerSelection = computerPlay();
+    const result = playRound(playerSelection, computerSelection);
+
+    if (result === undefined) {
+      alert("X Invalid input. Try again.");
+      continue;
+    }
+
+    console.log(result);
+
+    if (result.includes("Win")) {
+      playerScore++;
+    } else if (result.includes("Lose")) {
+      computerScore++;
+    }
+
+    roundsPlayed++;
+  }
+
+  console.log(`Final Score: Player ${playerScore} - Computer ${computerScore}`);
+
+  if (playerScore > computerScore) {
+    console.log("You win!");
+  } else if (computerScore > playerScore) {
+    console.log("Computer wins!");
+  } else {
+    console.log("It's a tie!");
+  }
 }
+
+game();
