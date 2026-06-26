@@ -1,2 +1,2 @@
 # roshambo-game
-Preview Link: TBA
+Preview Link: https://issho106.github.io/roshambo-game/
