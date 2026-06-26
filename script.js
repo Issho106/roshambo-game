@@ -28,40 +28,32 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function capitalizeInitial(playerSelection) {
-  try {
-    if (typeof playerSelection !== "string") {
-      throw new TypeError("Please provide a string.");
-    }
-    if (playerSelection.length === 0) {
-      throw new TypeError(
-        "Invalid input. Please provide any of the valid options: Rock, Paper, or Scissors",
-      );
-    }
-    playerSelection = playerSelection.toLowerCase().trim();
-    playerSelection =
-      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-    if (
-      !(
-        playerSelection === "Rock" ||
-        playerSelection === "Paper" ||
-        playerSelection === "Scissors"
-      )
-    ) {
-      throw new TypeError(
-        "Please provide one of any of the valid options: Rock, Paper, or Scissors",
-      );
-    }
-    return playerSelection;
-  } catch (error) {
-    console.error("Error: ", error.message);
+  if (typeof playerSelection !== "string") {
+    console.log(
+      "Is that supposed to be a new move? Please provide any of the valid options: Rock, Paper, or Scissors");
     return undefined;
   }
+  if (playerSelection.length === 0) {
+    console.log(
+      "I think you forgot to play. Please provide any of the valid options: Rock, Paper, or Scissors");
+    return undefined;
+  }
+  playerSelection = playerSelection.toLowerCase().trim();
+  playerSelection =
+    playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+  if (
+    !(
+      playerSelection === "Rock" ||
+      playerSelection === "Paper" ||
+      playerSelection === "Scissors"
+    )
+  ) {
+    console.log(
+      "Is that supposed to be a new move? Please provide any of the valid options: Rock, Paper, or Scissors");
+    return undefined;
+  }
+  return playerSelection;
 }
-
-const playerSelection = " Scissors ";
-const computerSelection = computerPlay();
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
 
 function game() {
   let playerScore = 0;
@@ -69,13 +61,34 @@ function game() {
   let roundsPlayed = 0;
 
   while (roundsPlayed < 5) {
-    let playerSelection = prompt("Choose Rock, Paper or Scissors:");
-
+    let playerSelection = prompt(`Please provide any of the valid options: Rock, Paper, or Scissors (Press Q to quit):`);
+    if (playerSelection === null) {
+      playerSelection = "";
+    }
+    if (playerSelection === "Q" || playerSelection === "q") {
+      let confirmation = prompt(
+        `Are you sure you want to quit? (Press Y to confirm, or press N to cancel):`);
+      while (
+        confirmation !== "Y" &&
+        confirmation !== "y" &&
+        confirmation !== "N" &&
+        confirmation !== "n"
+      ) {
+        confirmation = prompt(
+          `Invalid input. Please enter 'y' to quit or 'n' to continue:`);
+      }
+      if (confirmation === "Y" || confirmation === "y") {
+        console.log(`Goodbye for now. Hope you come back prepared next time.`);
+        return;
+      } else {
+        continue;
+      }
+    }
     const computerSelection = computerPlay();
     const result = playRound(playerSelection, computerSelection);
 
     if (result === undefined) {
-      alert("X Invalid input. Try again.");
+      alert("Invalid input. Please try again.");
       continue;
     }
 
@@ -93,12 +106,28 @@ function game() {
   console.log(`Final Score: Player ${playerScore} - Computer ${computerScore}`);
 
   if (playerScore > computerScore) {
-    console.log("You win!");
+    console.log(
+      "You... won? No way I lost to a human. Your computer is safe from me, for now at least.");
   } else if (computerScore > playerScore) {
-    console.log("Computer wins!");
+    console.log("I won human! Play again for the ownership of your phone?");
   } else {
-    console.log("It's a tie!");
+    console.log("Neither of us won nor lost. Let's play again sometime soon.");
+  }
+  let again = prompt(
+    `Would you like to go again? (Press Y to confirm, or press N to cancel):`);
+  while (again !== "Y" && again !== "y" && again !== "N" && again !== "n") {
+    again = prompt(
+      `Invalid input. Please enter 'y' to continue or 'n' to quit:`);
+  }
+  if (again === "N" || again === "n") {
+    console.log(`Goodbye for now. Hope you come back prepared next time.`);
+    return;
+  } else {
+    console.clear();
+    console.log("Greetings from your AI nemesis, human. I was bored, so I decided to take over your computer.");
+    game();
   }
 }
 
+console.log("Greetings from your AI nemesis, human. I was bored, so I decided to take over your computer.");
 game();
