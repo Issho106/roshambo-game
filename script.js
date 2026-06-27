@@ -75,7 +75,7 @@ function game() {
         confirmation !== "n"
       ) {
         confirmation = prompt(
-          `Invalid input. Please type 'y' to quit or 'n' to continue:`);
+          `Invalid input. Please type Y to quit or type N to continue:`);
       }
       if (confirmation === "Y" || confirmation === "y") {
         console.log(`Goodbye for now. Hope you come back prepared next time.`);
@@ -114,10 +114,10 @@ function game() {
     console.log("Neither of us won nor lost. Let's play again sometime soon.");
   }
   let again = prompt(
-    `Would you like to go again? (Type Y to confirm, or type N to cancel):`);
+    `Would you like to go again? (Type Y to confirm, or type N to quit):`);
   while (again !== "Y" && again !== "y" && again !== "N" && again !== "n") {
     again = prompt(
-      `Invalid input. Please enter 'y' to continue or 'n' to quit:`);
+      `Invalid input. Please type Y to restart or type N to exit the game:`);
   }
   if (again === "N" || again === "n") {
     console.log(`Goodbye for now. Hope you come back prepared next time.`);
