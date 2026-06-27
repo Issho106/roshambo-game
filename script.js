@@ -63,10 +63,7 @@ function game() {
   while (roundsPlayed < 5) {
     console.log("Round " + (roundsPlayed + 1));
     let playerSelection = prompt(`Please provide any of the valid options: Rock, Paper, or Scissors (Type Q to quit):`);
-    if (playerSelection === null) {
-      playerSelection = "";
-    }
-    if (playerSelection === "Q" || playerSelection === "q") {
+    if (playerSelection === "Q" || playerSelection === "q" || playerSelection === null) {
       let confirmation = prompt(
         `Are you sure you want to quit? (Type Y to confirm, or type N to cancel):`);
       while (
