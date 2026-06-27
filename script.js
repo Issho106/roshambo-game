@@ -155,6 +155,6 @@ function game() {
 
 alert("Welcome to Rock, Paper, Scissors!\n" +
       "A game of 5 rounds between you and the evil AI will be held.\n" +
-      "Open the Console by pressing (Ctrl+Shift+i) or (Fn+F12) to start the game.");
+      "Open the DevTools by pressing (Ctrl + Shift + i) or (F12), then head to Console to start the game.");
 
 game();
