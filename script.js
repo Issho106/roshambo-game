@@ -61,13 +61,13 @@ function game() {
   let roundsPlayed = 0;
 
   while (roundsPlayed < 5) {
-    let playerSelection = prompt(`Please provide any of the valid options: Rock, Paper, or Scissors (Press Q to quit):`);
+    let playerSelection = prompt(`Please provide any of the valid options: Rock, Paper, or Scissors (Type Q to quit):`);
     if (playerSelection === null) {
       playerSelection = "";
     }
     if (playerSelection === "Q" || playerSelection === "q") {
       let confirmation = prompt(
-        `Are you sure you want to quit? (Press Y to confirm, or press N to cancel):`);
+        `Are you sure you want to quit? (Type Y to confirm, or type N to cancel):`);
       while (
         confirmation !== "Y" &&
         confirmation !== "y" &&
@@ -75,7 +75,7 @@ function game() {
         confirmation !== "n"
       ) {
         confirmation = prompt(
-          `Invalid input. Please enter 'y' to quit or 'n' to continue:`);
+          `Invalid input. Please type 'y' to quit or 'n' to continue:`);
       }
       if (confirmation === "Y" || confirmation === "y") {
         console.log(`Goodbye for now. Hope you come back prepared next time.`);
@@ -88,7 +88,7 @@ function game() {
     const result = playRound(playerSelection, computerSelection);
 
     if (result === undefined) {
-      alert("Invalid input. Please try again.");
+      alert("Invalid input. Please try again human.");
       continue;
     }
 
@@ -114,7 +114,7 @@ function game() {
     console.log("Neither of us won nor lost. Let's play again sometime soon.");
   }
   let again = prompt(
-    `Would you like to go again? (Press Y to confirm, or press N to cancel):`);
+    `Would you like to go again? (Type Y to confirm, or type N to cancel):`);
   while (again !== "Y" && again !== "y" && again !== "N" && again !== "n") {
     again = prompt(
       `Invalid input. Please enter 'y' to continue or 'n' to quit:`);
